@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij.platform' version '2.18.1'
+}
+
+group = 'org.blackprism'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
+}
+
+dependencies {
+    intellijPlatform {
+        // Since 2025.3 the Community/Ultimate split is gone: a single unified distribution.
+        intellijIdea('2026.1')
+
+        // VCS APIs (ChangeListManager, FileStatusManager, ...) live in the bundled VCS module.
+        bundledModule('com.intellij.modules.vcs')
+    }
+
+    testImplementation 'junit:junit:4.13.2'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+intellijPlatform {
+    pluginConfiguration {
+        name = 'Tab Switch Reborn'
+        ideaVersion {
+            sinceBuild = '243'
+            // No upper bound: keep the plugin usable on future IDE builds.
+            untilBuild = provider { null }
+        }
+    }
+
+    pluginVerification {
+        ides {
+            // Verify against every IDE in the supported build range (downloads them
+            // on first run). Comment out to skip verification.
+            recommended()
+        }
+    }
+}

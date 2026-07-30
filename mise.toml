@@ -1,0 +1,33 @@
+# mise configuration for the Tab Switch Reborn IntelliJ plugin.
+# https://mise.jdx.dev/
+#
+# Provides the exact JDK the build needs and a few convenience tasks.
+# Usage:
+#   mise install       # install the pinned toolchain (JDK 21)
+#   mise run build      # build the distributable plugin zip
+#   mise run run        # launch a sandbox IDE with the plugin installed
+#   mise run verify     # run the JetBrains plugin verifier
+
+[tools]
+# mise sets JAVA_HOME automatically from this, used by Gradle and the toolchain.
+java = "temurin-21.0.11"
+
+[tasks.build]
+description = "Build the distributable plugin zip (build/distributions)"
+run = "./gradlew buildPlugin --console=plain"
+
+[tasks.assemble]
+description = "Compile the plugin without packaging"
+run = "./gradlew classes --console=plain"
+
+[tasks.run]
+description = "Launch a sandbox IDE with the plugin installed"
+run = "./gradlew runIde --console=plain"
+
+[tasks.verify]
+description = "Run the JetBrains plugin verifier against the target IDE"
+run = "./gradlew verifyPlugin --console=plain"
+
+[tasks.clean]
+description = "Remove build outputs"
+run = "./gradlew clean --console=plain"

@@ -1,0 +1,75 @@
+<idea-plugin>
+    <id>org.blackprism.tabswitchreborn.jetbrains</id>
+    <name>Tab Switch Reborn</name>
+
+    <vendor email="srm@bouh.org">srm</vendor>
+
+    <description><![CDATA[
+
+    <strong>
+        Fixed issues with the original <a href="https://plugins.jetbrains.com/plugin/179-tabswitch">Tabswitch</a> as it
+        was not working correctly with the latest version of Jetbrain editors.
+    </strong>
+    <br/>
+    <br/>
+
+    Open files/tabs switcher to quickly switch between tabs with less keystrokes than
+    Recent Files. Open files are selected from a list in most recently used order, similarly
+    to Alt+Tab in Windows or Ctrl-Tab in Opera. By default the action is mapped to
+    Alt+A, but another popular assignment is CMD+E.<br><br>
+
+    Thanks to Timur Zambalayev for the original plugin, Martin Fuhrer for a major contribution
+    in the form of a rewrite and Mark Scott for patching a bug.
+    ]]>
+    </description>
+
+    <change-notes><![CDATA[
+    <b>1.0 &mdash; Reborn for IntelliJ 2026</b>
+    <ul>
+      <li>Rebuilt for the latest IntelliJ versions &mdash; fixes the crash on recent IDEs.</li>
+      <li>New settings page under <i>Settings | Tools | Tab Switch Reborn</i>.</li>
+      <li><b>Popup order</b> option: <i>Same as the editor tabs</i> (follows the tab bar, including alphabetical sorting) or <i>Most recently used</i> (Alt+Tab style).</li>
+      <li><b>Maximum popup width</b> setting: the popup grows to fit the longest name, up to your limit.</li>
+      <li><b>Maximum visible rows</b> setting: extra files stay reachable through the scrollbar.</li>
+    </ul>
+  ]]></change-notes>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.vcs</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable
+                parentId="tools"
+                instance="org.blackprism.tabswitchreborn.settings.TabSwitchConfigurable"
+                id="org.blackprism.tabswitchreborn.settings.TabSwitchConfigurable"
+                displayName="Tab Switch Reborn"/>
+    </extensions>
+
+    <actions>
+        <action
+                id="org.blackprism.tabswitchreborn.NextTabAction"
+                class="org.blackprism.tabswitchreborn.action.NextTabAction"
+                text="Next Tab">
+        </action>
+        <action
+                id="org.blackprism.tabswitchreborn.PrevTabAction"
+                class="org.blackprism.tabswitchreborn.action.PrevTabAction"
+                text="Previous Tab">
+        </action>
+        <action
+                id="org.blackprism.tabswitchreborn.NextVcsChangeAction"
+                class="org.blackprism.tabswitchreborn.action.NextVcsChangeAction"
+                text="Next VCS Change Tab">
+        </action>
+        <action
+                id="org.blackprism.tabswitchreborn.PrevVcsChangeAction"
+                class="org.blackprism.tabswitchreborn.action.PrevVcsChangeAction"
+                text="Previous VCS Change Tab">
+        </action>
+        <action
+                id="org.blackprism.tabswitchreborn.SwitchTabAction"
+                class="org.blackprism.tabswitchreborn.action.SwitchTabAction"
+                text="Switch Between Two Tabs (No UI, No Keyboard Modifier Needed)">
+        </action>
+    </actions>
+</idea-plugin>
