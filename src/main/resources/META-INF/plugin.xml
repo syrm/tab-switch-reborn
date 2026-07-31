@@ -15,8 +15,9 @@
 
     Open files/tabs switcher to quickly switch between tabs with less keystrokes than
     Recent Files. Open files are selected from a list in most recently used order, similarly
-    to Alt+Tab in Windows or Ctrl-Tab in Opera. By default the action is mapped to
-    Alt+A, but another popular assignment is CMD+E.<br><br>
+    to Alt+Tab in Windows or Ctrl-Tab in Opera. No keyboard shortcut is assigned by
+    default: open <i>Settings | Keymap</i>, search for the <i>Tab Switch Reborn</i> actions
+    and assign the shortcuts you prefer (popular choices are Alt+A or CMD+E).<br><br>
 
     Thanks to Timur Zambalayev for the original plugin, Martin Fuhrer for a major contribution
     in the form of a rewrite and Mark Scott for patching a bug.
