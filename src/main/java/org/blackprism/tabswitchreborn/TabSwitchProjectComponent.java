@@ -38,6 +38,7 @@ import javax.swing.ScrollPaneConstants;
 
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
@@ -281,7 +282,7 @@ public final class TabSwitchProjectComponent implements KeyEventDispatcher {
   private void openSelectedFile() {
     VirtualFile file = list.getSelectedValue();
     if (file != null && file.isValid()) {
-      FileEditorManager.getInstance(project).openFile(file, true, true);
+      FileEditorManager.getInstance(project).openEditor(new OpenFileDescriptor(project, file), true);
     }
   }
 

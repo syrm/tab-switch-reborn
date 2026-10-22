@@ -23,6 +23,7 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.fileEditor.impl.EditorHistoryManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
@@ -41,7 +42,7 @@ public class SwitchTabAction extends AnAction implements DumbAware {
     FileEditorManager fileEditorManager = FileEditorManager.getInstance(project);
     VirtualFile file = findPreviousFile(project, fileEditorManager);
     if (file != null) {
-      fileEditorManager.openFile(file, true, true);
+      fileEditorManager.openEditor(new OpenFileDescriptor(project, file), true);
     }
   }
 
